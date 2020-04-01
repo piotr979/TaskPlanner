@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  TaskPlanner
 //
 //  Created by Start on 25/03/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class StatsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

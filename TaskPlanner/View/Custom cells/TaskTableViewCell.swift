@@ -11,10 +11,26 @@ import UIKit
 
  var selectedButton = UIButton()
  var selectedPath: Int = -1
+
+protocol TaskProcessingDelegate {
+    func taskRunning(buttonInRow: UIButton)
+    func taskStopping()
+}
+
 enum buttonState: String {
     case Play = "stop.fill", Stop = "play.fill"
 }
 class TaskTableViewCell: UITableViewCell {
+    
+    var selectedButton2 = UIButton()
+    static let notificationName = Notification.Name("passDataAboutTasks")
+    
+//    @objc func stopTaskUI() {
+//      print("task")
+//         selectedButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+//       
+//    }
+     
 
     @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var taskToggleButton: UIButton!
@@ -23,14 +39,16 @@ class TaskTableViewCell: UITableViewCell {
     var taskState: buttonState = .Play
    
    
-   
+    
+    var taskProcessingDelegate: TaskProcessingDelegate?
+    let taskController = TasksViewController()
     
     var indexPath: IndexPath!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
+       
+      
         // Initialization code
     }
 
@@ -42,72 +60,37 @@ class TaskTableViewCell: UITableViewCell {
     
     @IBAction func toggleButton(_ sender: Any) {
         
-        print("Index path is \(selectedPath)")
-        print("\(indexPath.row)")
-        
-        print(selectedButton)
-        print(selectedButton.isSelected)
+       
+      // check if there is anythingRunningAtTheMoment
         if (selectedButton.isSelected == true && indexPath.row != selectedPath) {
-            print("Switch button")
+         
           selectedButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            
            taskToggleButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
             selectedButton = taskToggleButton
                     selectedButton.isSelected = true
         } else {
-            print("process off")
-            print(selectedButton.isSelected)
-            if (selectedButton.isSelected == true && indexPath.row == selectedPath ) {
-                  taskToggleButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+           
+          // if not Launch it
+            if (taskToggleButton.isSelected == false) {
+                 taskToggleButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+                taskToggleButton.isSelected = true
+                taskProcessingDelegate?.taskRunning(buttonInRow: taskToggleButton)
             } else {
-     taskToggleButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+                 taskToggleButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                taskToggleButton.isSelected = false
+                 taskProcessingDelegate?.taskStopping()
             }
+            
+          
             selectedButton = taskToggleButton
-          selectedButton.isSelected = true
+         
            
         }
         
-        
-//        print(selectedButton.isSelected)
-//        if (taskToggleButton != selectedButton && selectedButton.isSelected == true) {
-//            print("not same")
-//            print(selectedButton)
-//            selectedButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-//             taskToggleButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-//            taskToggleButton.isSelected = true
-//            selectedButton = taskToggleButton
-//            return
-//        }
-//        if (taskToggleButton.isSelected == false) {
-//            print("IS false")
-//        taskToggleButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
-//        taskToggleButton.isSelected = true
-//        selectedButton = taskToggleButton
-//        } else {
-//             taskToggleButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-//            taskToggleButton.isSelected = false
-//        }
-        
-        
-//        if taskToggleButton == selectedButton {
-//            taskToggleButton.setImage(UIImage(systemName: taskState.rawValue), for: .normal)
-//            print("selected")
-//        }
-//        if (selectedPath == nil) || (selectedPath == indexPath ) {)
-//        } else {
-//
-//        }
-        
-        //jesli wciskam na button ktory jest stop - change to play it, second time stop it
-        
-     
-//           // set Image of previous one to stop.fill
-//            taskToggleButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
-//        } else {
-//             taskToggleButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-//        }
-        
+    
         selectedPath = indexPath.row
-        print("\(selectedPath)")
+       
         switch taskState {
             
         case .Play: taskState = .Stop
@@ -115,5 +98,8 @@ class TaskTableViewCell: UITableViewCell {
             
         }
     }
+    
+    
+ 
    
 }

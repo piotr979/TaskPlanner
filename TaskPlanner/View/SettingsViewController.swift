@@ -9,10 +9,12 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      print("ths is writhg")
         // Do any additional setup after loading the view.
     }
     

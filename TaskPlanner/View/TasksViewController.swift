@@ -10,15 +10,30 @@ import UIKit
 import CoreData
 
 
-class TasksViewController: UITableViewController {
+class TasksViewController: UITableViewController, TaskProcessingDelegate {
+    
+    
+    @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet var tasksTableView: UITableView!
     
+    var bgTask = UIBackgroundTaskIdentifier.init(rawValue: 1)
+    var timer = Timer()
+    var counter = 0
+    var selectedButtonRow: UIButton?
+  
     var tasks = [Task]()
-   
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+     
+        Settings.userSettings.loadSettings()
+        bgTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+        UIApplication.shared.endBackgroundTask(self.bgTask)
+        })
+        
+    
         tasksTableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTaskCell")
       
         loadTasks()
@@ -27,7 +42,7 @@ class TasksViewController: UITableViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+   
     
     //MARK: TableView overwritten methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,6 +50,8 @@ class TasksViewController: UITableViewController {
         cell.taskNameLabel.text = tasks[indexPath.row].taskName
        
         cell.indexPath = indexPath
+    
+      cell.taskProcessingDelegate = self
         return cell
     }
     
@@ -74,16 +91,16 @@ class TasksViewController: UITableViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-           
-            let newTask = Task(context: self.context)
-            print(textField.text!)
-            newTask.taskName = textField.text!
-            newTask.taskTime = 15
-            newTask.taskFinishedAmt = 0
-            
-            self.tasks.append(newTask)
-            self.saveTasks()
-            self.tableView.reloadData()
+       
+        let newTask = Task(context: self.context)
+        print(textField.text!)
+        newTask.taskName = textField.text!
+        newTask.taskTime = 15
+        newTask.taskFinishedAmt = 0
+        
+        self.tasks.append(newTask)
+        self.saveTasks()
+        self.tableView.reloadData()
             
         }
         alert.addAction(cancelAction)
@@ -123,9 +140,44 @@ class TasksViewController: UITableViewController {
         
         
     }
+    //MARK: Tasks launching/stopping
+   
+    
+    func taskRunning(buttonInRow: UIButton) {
+        selectedButtonRow = buttonInRow
+    
+       
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(notificationReceived), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.default)
+    }
 
+    func taskStopping() {
+        
+        navigationBar.prompt = NSLocalizedString("Task finished. Waiting for new one.", comment: "")
+        counter = 0
+      
+        timer.invalidate()
+        print("stopping")
+        selectedButtonRow!.setImage(UIImage(systemName: "play.fill"), for: .normal)
+    
+        //NotificationCenter.default.post(name: TaskTableViewCell.notificationName, object: nil)
+        
+    }
+    
+    @objc
+       func notificationReceived() {
+           print(counter)
+           navigationBar.prompt = NSLocalizedString("Task running. Time left:  \(counter)", comment: "")
+           counter += 1
+           if counter == 3 {
+            
+               taskStopping()
+           }
+       }
    
 }
+
+
 
 extension TasksViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -137,7 +189,6 @@ extension TasksViewController: UISearchBarDelegate {
         
         loadTasks(with: request, predicate: predicate)
        
-        
         
     }
     

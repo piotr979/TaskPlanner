@@ -67,6 +67,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="navigationBar" destination="XfK-6t-Z8c" id="hDQ-2v-eE0"/>
                         <outlet property="tasksTableView" destination="1kd-a6-T00" id="qaK-lB-sU9"/>
                     </connections>
                 </tableViewController>
@@ -77,7 +78,7 @@
         <!--Settings-->
         <scene sceneID="pRq-Te-LHO">
             <objects>
-                <viewController id="k4e-TY-ixA" sceneMemberID="viewController">
+                <viewController id="k4e-TY-ixA" customClass="SettingsViewController" customModule="TaskPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XpY-cA-feG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,10 +119,10 @@
             </objects>
             <point key="canvasLocation" x="269.56521739130437" y="511.60714285714283"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Settings Cells View Controller-->
         <scene sceneID="84C-SE-sm6">
             <objects>
-                <tableViewController id="b6p-8v-eY1" sceneMemberID="viewController">
+                <tableViewController id="b6p-8v-eY1" customClass="SettingsCellsViewController" customModule="TaskPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fEV-e3-wqv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,6 +157,9 @@
                                                 <constraint firstItem="BDX-W5-kkB" firstAttribute="centerY" secondItem="saT-JA-taL" secondAttribute="centerY" id="rJW-ox-EHW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="GIG-Tq-K0x" kind="presentation" identifier="selectSound" id="aJU-Ns-R3g"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kNl-WA-ZX2">
                                         <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
@@ -184,6 +188,9 @@
                                                 <constraint firstItem="ckg-zC-0xZ" firstAttribute="leading" secondItem="Pe6-GO-arM" secondAttribute="leadingMargin" id="VaP-va-Wna"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="QqE-ew-1Qc" kind="presentation" identifier="selectTime" id="98j-Nr-cft"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ASD-p3-LF4">
                                         <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
@@ -212,10 +219,15 @@
                             <outlet property="delegate" destination="b6p-8v-eY1" id="ISq-QY-WuX"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="finishedSoundLabel" destination="BDX-W5-kkB" id="Cex-UQ-WEF"/>
+                        <outlet property="timeLabel" destination="dfs-1O-VZa" id="P1K-Qb-1Se"/>
+                        <outlet property="volumeSlider" destination="tHP-VC-hN7" id="NVQ-Gn-Tqi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbk-79-ExC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1168" y="661"/>
+            <point key="canvasLocation" x="1139" y="612"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="HLn-LK-SLd">
@@ -391,6 +403,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dzb-lK-JPH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-610.14492753623188" y="839.39732142857144"/>
+        </scene>
+        <!--Finished Sound Table View Controller-->
+        <scene sceneID="HRh-4w-PyJ">
+            <objects>
+                <tableViewController storyboardIdentifier="SoundTableViewController" id="GIG-Tq-K0x" customClass="FinishedSoundTableViewController" customModule="TaskPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SdY-Zg-TuF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="671"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="finishedSounds" id="HNv-WB-rX3">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HNv-WB-rX3" id="kT8-TW-nah">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GIG-Tq-K0x" id="waV-nf-N0Q"/>
+                            <outlet property="delegate" destination="GIG-Tq-K0x" id="bwY-kp-1aY"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="owD-AS-xqz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2549" y="569"/>
+        </scene>
+        <!--Time Select View Controller-->
+        <scene sceneID="07z-WF-DPL">
+            <objects>
+                <viewController id="QqE-ew-1Qc" customClass="TimeSelectViewController" customModule="TaskPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kzy-Kh-9w7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="671"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set timer for tasks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVk-KC-P4C">
+                                <rect key="frame" x="137" y="36" width="140" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5e-fF-nNb">
+                                <rect key="frame" x="47" y="89" width="320" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QqE-ew-1Qc" id="aNG-dK-q2M"/>
+                                    <outlet property="delegate" destination="QqE-ew-1Qc" id="1MZ-Ju-4Pl"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IVk-KC-P4C" firstAttribute="centerX" secondItem="Kzy-Kh-9w7" secondAttribute="centerX" id="Cnd-T2-vxB"/>
+                            <constraint firstItem="h5e-fF-nNb" firstAttribute="top" secondItem="lLk-Ce-prI" secondAttribute="top" constant="89" id="JwE-nY-s5c"/>
+                            <constraint firstItem="h5e-fF-nNb" firstAttribute="centerX" secondItem="Kzy-Kh-9w7" secondAttribute="centerX" id="fFy-dC-pYY"/>
+                            <constraint firstItem="h5e-fF-nNb" firstAttribute="top" secondItem="IVk-KC-P4C" secondAttribute="bottom" constant="32" id="hAh-Os-Ucv"/>
+                            <constraint firstItem="IVk-KC-P4C" firstAttribute="top" secondItem="lLk-Ce-prI" secondAttribute="top" constant="36" id="smb-r1-CDw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lLk-Ce-prI"/>
+                    </view>
+                    <connections>
+                        <outlet property="timeSelectPicker" destination="h5e-fF-nNb" id="NZT-uu-eg4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Mr-nN-te8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1833" y="239"/>
         </scene>
     </scenes>
     <resources>

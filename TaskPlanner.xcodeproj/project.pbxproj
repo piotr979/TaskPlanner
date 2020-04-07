@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C91FB2BF242E2B390063B805 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91FB2BD242E2B390063B805 /* TaskTableViewCell.swift */; };
 		C91FB2C0242E2B390063B805 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91FB2BE242E2B390063B805 /* TaskTableViewCell.xib */; };
+		C937C7AB243A09AD0050B0F3 /* PowerLoad.wav in Resources */ = {isa = PBXBuildFile; fileRef = C91BC1832439F537008D1A18 /* PowerLoad.wav */; };
+		C937C7AC243A09B00050B0F3 /* Striking.wav in Resources */ = {isa = PBXBuildFile; fileRef = C91BC1822439F537008D1A18 /* Striking.wav */; };
 		C981747A242BC1DE00EA6877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9817479242BC1DE00EA6877 /* AppDelegate.swift */; };
 		C981747C242BC1DE00EA6877 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C981747B242BC1DE00EA6877 /* SceneDelegate.swift */; };
 		C981747E242BC1DE00EA6877 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C981747D242BC1DE00EA6877 /* TasksViewController.swift */; };
@@ -17,12 +19,19 @@
 		C9817486242BC1DE00EA6877 /* TaskPlanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9817484242BC1DE00EA6877 /* TaskPlanner.xcdatamodeld */; };
 		C9817488242BC1E100EA6877 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9817487242BC1E100EA6877 /* Assets.xcassets */; };
 		C981748B242BC1E100EA6877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9817489242BC1E100EA6877 /* LaunchScreen.storyboard */; };
+		C989EFFB24363E0B0050B5E5 /* TimeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989EFFA24363E0B0050B5E5 /* TimeSelectViewController.swift */; };
+		C989EFFD24363E260050B5E5 /* FinishedSoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989EFFC24363E260050B5E5 /* FinishedSoundTableViewController.swift */; };
+		C989EFFF24363EBD0050B5E5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989EFFE24363EBD0050B5E5 /* Settings.swift */; };
+		C99588082437884F00037286 /* SettingsCellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99588072437884F00037286 /* SettingsCellsViewController.swift */; };
+		C99777F32435DFB4009387F6 /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99777F22435DFB4009387F6 /* RepeatingTimer.swift */; };
 		C9C1E247242D014E007016BF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C1E246242D014E007016BF /* SettingsViewController.swift */; };
 		C9C1E24A242D106C007016BF /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C1E248242D106C007016BF /* Task+CoreDataClass.swift */; };
 		C9C1E24B242D106C007016BF /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C1E249242D106C007016BF /* Task+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C91BC1822439F537008D1A18 /* Striking.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Striking.wav; sourceTree = "<group>"; };
+		C91BC1832439F537008D1A18 /* PowerLoad.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PowerLoad.wav; sourceTree = "<group>"; };
 		C91FB2BD242E2B390063B805 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		C91FB2BE242E2B390063B805 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		C9817476242BC1DE00EA6877 /* TaskPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +44,11 @@
 		C9817487242BC1E100EA6877 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C981748A242BC1E100EA6877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C981748C242BC1E100EA6877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C989EFFA24363E0B0050B5E5 /* TimeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectViewController.swift; sourceTree = "<group>"; };
+		C989EFFC24363E260050B5E5 /* FinishedSoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedSoundTableViewController.swift; sourceTree = "<group>"; };
+		C989EFFE24363EBD0050B5E5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C99588072437884F00037286 /* SettingsCellsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellsViewController.swift; sourceTree = "<group>"; };
+		C99777F22435DFB4009387F6 /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
 		C9C1E246242D014E007016BF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C9C1E248242D106C007016BF /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C9C1E249242D106C007016BF /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -51,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C91BC1842439F53D008D1A18 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C91BC1832439F537008D1A18 /* PowerLoad.wav */,
+				C91BC1822439F537008D1A18 /* Striking.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		C91FB2C1242E2F650063B805 /* Custom cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +81,15 @@
 				C91FB2BE242E2B390063B805 /* TaskTableViewCell.xib */,
 			);
 			path = "Custom cells";
+			sourceTree = "<group>";
+		};
+		C943C46E24361470009EDD12 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				C99777F22435DFB4009387F6 /* RepeatingTimer.swift */,
+				C989EFFE24363EBD0050B5E5 /* Settings.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		C981746D242BC1DE00EA6877 = {
@@ -85,6 +117,7 @@
 				C981747B242BC1DE00EA6877 /* SceneDelegate.swift */,
 				C9C1E245242D00E6007016BF /* View */,
 				C9817481242BC1DE00EA6877 /* Main.storyboard */,
+				C943C46E24361470009EDD12 /* Support */,
 				C9817487242BC1E100EA6877 /* Assets.xcassets */,
 				C9817489242BC1E100EA6877 /* LaunchScreen.storyboard */,
 				C981748C242BC1E100EA6877 /* Info.plist */,
@@ -93,13 +126,33 @@
 			path = TaskPlanner;
 			sourceTree = "<group>";
 		};
+		C99588092437885E00037286 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				C99588072437884F00037286 /* SettingsCellsViewController.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		C9C18F2124391CF8001659C9 /* Settings views */ = {
+			isa = PBXGroup;
+			children = (
+				C989EFFA24363E0B0050B5E5 /* TimeSelectViewController.swift */,
+				C989EFFC24363E260050B5E5 /* FinishedSoundTableViewController.swift */,
+			);
+			path = "Settings views";
+			sourceTree = "<group>";
+		};
 		C9C1E245242D00E6007016BF /* View */ = {
 			isa = PBXGroup;
 			children = (
 				C981747D242BC1DE00EA6877 /* TasksViewController.swift */,
+				C91FB2C1242E2F650063B805 /* Custom cells */,
 				C981747F242BC1DE00EA6877 /* StatsViewController.swift */,
 				C9C1E246242D014E007016BF /* SettingsViewController.swift */,
-				C91FB2C1242E2F650063B805 /* Custom cells */,
+				C91BC1842439F53D008D1A18 /* Sounds */,
+				C99588092437885E00037286 /* SubViews */,
+				C9C18F2124391CF8001659C9 /* Settings views */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,7 +218,9 @@
 				C91FB2C0242E2B390063B805 /* TaskTableViewCell.xib in Resources */,
 				C981748B242BC1E100EA6877 /* LaunchScreen.storyboard in Resources */,
 				C9817488242BC1E100EA6877 /* Assets.xcassets in Resources */,
+				C937C7AC243A09B00050B0F3 /* Striking.wav in Resources */,
 				C9817483242BC1DE00EA6877 /* Main.storyboard in Resources */,
+				C937C7AB243A09AD0050B0F3 /* PowerLoad.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,15 +231,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C989EFFB24363E0B0050B5E5 /* TimeSelectViewController.swift in Sources */,
 				C9817480242BC1DE00EA6877 /* StatsViewController.swift in Sources */,
 				C981747E242BC1DE00EA6877 /* TasksViewController.swift in Sources */,
+				C989EFFD24363E260050B5E5 /* FinishedSoundTableViewController.swift in Sources */,
 				C91FB2BF242E2B390063B805 /* TaskTableViewCell.swift in Sources */,
+				C989EFFF24363EBD0050B5E5 /* Settings.swift in Sources */,
 				C9C1E24B242D106C007016BF /* Task+CoreDataProperties.swift in Sources */,
 				C9C1E24A242D106C007016BF /* Task+CoreDataClass.swift in Sources */,
 				C981747A242BC1DE00EA6877 /* AppDelegate.swift in Sources */,
+				C99588082437884F00037286 /* SettingsCellsViewController.swift in Sources */,
 				C9817486242BC1DE00EA6877 /* TaskPlanner.xcdatamodeld in Sources */,
 				C981747C242BC1DE00EA6877 /* SceneDelegate.swift in Sources */,
 				C9C1E247242D014E007016BF /* SettingsViewController.swift in Sources */,
+				C99777F32435DFB4009387F6 /* RepeatingTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

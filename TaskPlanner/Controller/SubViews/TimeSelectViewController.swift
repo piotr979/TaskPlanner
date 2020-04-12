@@ -11,15 +11,32 @@ import UIKit
 protocol TimeSelectToParentViewDelegate {
     func passTimeBackToMainView(selectedTime: Int)
 }
+
 class TimeSelectViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    @IBOutlet weak var timeSelectPicker: UIPickerView!
     
     var delegate: TimeSelectToParentViewDelegate?
     var selectedTime: Int?
     
+    override func viewDidLoad() {
+          super.viewDidLoad()
+
+          timeSelectPicker.selectRow(Settings.userSettings.defaultTimeMinutes, inComponent: 0, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+          if (isBeingDismissed == true ) {
+            
+            Settings.userSettings.saveSettings()
+             self.delegate?.passTimeBackToMainView(selectedTime: timeSelectPicker.selectedRow(inComponent: 0))
+          }
+      }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Settings.userSettings.timeValues.count
     }
@@ -27,31 +44,9 @@ class TimeSelectViewController: UIViewController, UIPickerViewDelegate, UIPicker
         return "\(Settings.userSettings.timeValues[row]) mins"
     }
     
-    @IBOutlet weak var timeSelectPicker: UIPickerView!
     
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-      print(Settings.userSettings.defaultTimeMinutes)
-        timeSelectPicker.selectRow(Settings.userSettings.defaultTimeMinutes, inComponent: 0, animated: true)
-        // Do any additional setup after loading the view.
-    }
-  
-
-   
     
-    override func viewWillDisappear(_ animated: Bool) {
-        if (isBeingDismissed == true ) {
-           
-            self.delegate?.passTimeBackToMainView(selectedTime: timeSelectPicker.selectedRow(inComponent: 0))
-       
-        }
-       // Settings.userSettings.defaultTimeMinutes = Settings.userSettings.timeValues[timeSelectPicker.selectedRow(inComponent: 0)]
-    }
 
     /*
     // MARK: - Navigation

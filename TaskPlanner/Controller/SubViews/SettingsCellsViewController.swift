@@ -18,6 +18,7 @@ class SettingsCellsViewController: UITableViewController, TimeSelectToParentView
         super.viewDidLoad()
         
         updateSettingsOnView()
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,5 +54,8 @@ class SettingsCellsViewController: UITableViewController, TimeSelectToParentView
         Settings.userSettings.saveSettings()
         updateSettingsOnView()
     }
-
+    @IBAction func setVolume(_ sender: Any) {
+        Settings.userSettings.volume = volumeSlider.value / 100
+    }
+    
 }
